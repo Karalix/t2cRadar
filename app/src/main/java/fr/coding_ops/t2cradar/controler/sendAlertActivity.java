@@ -13,8 +13,6 @@ import android.location.Location;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -88,7 +86,7 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
             // In debug mode, log the status
             Toast.makeText(getApplicationContext(), "Google Services available", Toast.LENGTH_SHORT).show();
             canGetLocation = true ;
-            LocationManager locationManager = new LocationManager(this);
+            MyLocationManager locationManager = new MyLocationManager(this);
             locationClient = new LocationClient(this, locationManager,locationManager);
 
         } else

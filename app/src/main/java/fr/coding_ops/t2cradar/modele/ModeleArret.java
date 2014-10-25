@@ -2,9 +2,6 @@ package fr.coding_ops.t2cradar.modele;
 
 import android.location.Location;
 
-import com.google.android.gms.internal.di;
-import com.google.android.gms.location.Geofence;
-
 import java.util.ArrayList;
 import java.util.List;
 

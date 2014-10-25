@@ -11,14 +11,14 @@ import com.google.android.gms.common.GooglePlayServicesClient;
 /**
  * Created by Alix on 22/10/2014.
  */
-public class LocationManager implements GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener {
+public class MyLocationManager implements GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener {
 
     private Activity activity;
 
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
 
-    public LocationManager(Activity activity)
+    public MyLocationManager(Activity activity)
     {
         this.activity = activity ;
     }
