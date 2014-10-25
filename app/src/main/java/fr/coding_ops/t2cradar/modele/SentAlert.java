@@ -12,7 +12,6 @@ public class SentAlert {
     private Arret arret ;
 
     public SentAlert( Arret arret) {
-        this.alertDate = new Date(System.currentTimeMillis());
-        this.arret = arret;
+
     }
 }

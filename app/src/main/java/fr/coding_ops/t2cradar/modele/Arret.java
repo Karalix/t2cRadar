@@ -1,26 +1,34 @@
 package fr.coding_ops.t2cradar.modele;
 
-import com.google.android.gms.location.Geofence;
-
 /**
  * Created by Alix on 22/10/2014.
  */
 public class Arret  {
 
-    private Geofence geofence = null ;
+    private double latitude ;
+    private double longitude ;
     private String name = null ;
+    private String id = null ;
 
-    public Arret(Geofence geofence, String name) {
-        this.geofence = geofence;
+    public Arret(String id, String name, double latitude, double longitude) {
+
+        this.latitude = latitude ;
+        this.longitude = longitude ;
         this.name = name;
+        this.id = id ;
     }
 
-    public Geofence getGeofence() {
-        return geofence;
-    }
 
     public String getName() {
         return name;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
 }

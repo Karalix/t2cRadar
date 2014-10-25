@@ -23,6 +23,8 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 
 import fr.coding_ops.t2cradar.R;
+import fr.coding_ops.t2cradar.modele.ModeleArret;
+import fr.coding_ops.t2cradar.modele.SentAlert;
 
 
 public class sendAlertActivity extends Activity implements ActionBar.TabListener {
@@ -132,6 +134,7 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
         }
         captedtLocation = locationClient.getLastLocation();
         Toast.makeText(getApplicationContext(), "lat : "+captedtLocation.getLatitude()+" lng : "+captedtLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+        SentAlert alert = new SentAlert(ModeleArret.getInstance().findNearestTo(captedtLocation));
     }
 
     /**
