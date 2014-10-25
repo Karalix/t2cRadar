@@ -1,0 +1,24 @@
+{
+  "arrets":
+  [
+    {
+      "id":"A003",
+      "name":"Champratel",
+      "latitude":45.814908,
+      "longitude":3.112241
+    },
+    {
+      "id":"A004",
+      "name":"Croix de Neyrat",
+      "latitude":45.814347,
+      "longitude":3.106839
+    },
+    {
+      "id":"A005",
+      "name":"Hauts de Chanturgue",
+      "latitude":45.810676,
+      "longitude":3.107097
+    }
+
+  ]
+}
