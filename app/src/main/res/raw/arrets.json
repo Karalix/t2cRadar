@@ -1,6 +1,5 @@
-{
-  "arrets":
-  [
+
+[
     {
       "id":"A003",
       "name":"Champratel",
@@ -19,6 +18,5 @@
       "latitude":45.810676,
       "longitude":3.107097
     }
+]
 
-  ]
-}

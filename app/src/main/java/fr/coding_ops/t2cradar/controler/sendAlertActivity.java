@@ -21,8 +21,10 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 
 import fr.coding_ops.t2cradar.R;
+import fr.coding_ops.t2cradar.modele.Arret;
 import fr.coding_ops.t2cradar.modele.ModeleArret;
 import fr.coding_ops.t2cradar.modele.SentAlert;
+import fr.coding_ops.t2cradar.modele.dataloader.JSONReader;
 
 
 public class sendAlertActivity extends Activity implements ActionBar.TabListener {
@@ -79,6 +81,12 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
                             .setTabListener(this));
         }
 
+        for(Arret a : JSONReader.getInstance().readArrets())
+        {
+            ModeleArret.getInstance().addArret(a);
+        }
+
+
 
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         // If Google Play services is available
@@ -132,6 +140,7 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
         }
         captedtLocation = locationClient.getLastLocation();
         Toast.makeText(getApplicationContext(), "lat : "+captedtLocation.getLatitude()+" lng : "+captedtLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), ModeleArret.getInstance().findNearestTo(captedtLocation).getName(), Toast.LENGTH_SHORT).show();
         SentAlert alert = new SentAlert(ModeleArret.getInstance().findNearestTo(captedtLocation));
     }
 
