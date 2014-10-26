@@ -17,6 +17,79 @@
       "name":"Hauts de Chanturgue",
       "latitude":45.810676,
       "longitude":3.107097
+    },
+    {
+        "id":"A006",
+        "name":"Collège A. Camus",
+        "latitude":45.807483,
+        "longitude":3.106705
+    },
+    {
+        "id":"A007",
+        "name":"Les Vignes",
+        "latitude":45.802629,
+        "longitude":3.106667
+    },
+    {
+        "id":"A008",
+        "name":"Lycée A. Brugière",
+        "latitude":45.801656,
+        "longitude":3.110458
+    },
+    {
+     "id":"A009",
+     "name":"Les Pistes",
+     "latitude":45.798964,
+     "longitude":3.113406
+    },
+    {
+       "id":"A010",
+       "name":"Musée d'Art Roget Quillot",
+       "latitude":45.793809,
+       "longitude":3.117373
+    },
+    {
+       "id":"A011",
+       "name":"Montferrand La Fontaine",
+       "latitude":45.791505,
+       "longitude":3.114504
+    },
+    {
+        "id":"A012",
+        "name":"Gravière",
+        "latitude":45.789622,
+        "longitude":3.110118
+    },
+    {
+         "id":"A013",
+         "name":"Stade M. Michelin",
+         "latitude":45.787682,
+         "longitude":3.106212
+    },
+    {
+      "id":"A014",
+      "name":"1er Mai",
+      "latitude":45.785346,
+      "longitude":3.101509
+    },
+    {
+        "id":"A015",
+        "name":"Les Carmes",
+        "latitude":45.782414,
+        "longitude":3.094189
+    },
+    {
+         "id":"A016",
+         "name":"Dellile Montlosier",
+         "latitude":45.781208,
+         "longitude":3.090484
+    },
+    {
+      "id":"A017",
+      "name":"Hotel de Ville",
+      "latitude":45.780601,
+      "longitude":3.085042
     }
+
 ]
 
