@@ -89,6 +89,42 @@
       "name":"Hotel de Ville",
       "latitude":45.780601,
       "longitude":3.085042
+    },
+    {
+        "id":"A018",
+        "name":"Gaillard",
+        "latitude":45.779688,
+        "longitude":3.081779
+    },
+    {
+         "id":"A019",
+         "name":"Jaude",
+         "latitude":45.776869,
+         "longitude":3.081740
+    },
+    {
+      "id":"A020",
+      "name":"Lagarlaye",
+      "latitude":45.773326,
+      "longitude":3.082626
+    },
+    {
+        "id":"A021",
+        "name":"Maison de la culture",
+        "latitude":45.770871,
+        "longitude":3.084968
+    },
+    {
+         "id":"A022",
+         "name":"Universités",
+         "latitude":45.771205,
+         "longitude":3.088949
+    },
+    {
+      "id":"A023",
+      "name":"St Jacques Dolet",
+      "latitude":45.764854,
+      "longitude":3.089061
     }
 
 ]
