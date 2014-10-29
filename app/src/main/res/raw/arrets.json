@@ -125,6 +125,66 @@
       "name":"St Jacques Dolet",
       "latitude":45.764854,
       "longitude":3.089061
+    },
+    {
+        "id":"A024",
+        "name":"CHU G. Montpied",
+        "latitude":45.761353,
+        "longitude":3.089584
+    },
+    {
+         "id":"A025",
+         "name":"St Jacques Loucheur",
+         "latitude":45.761259,
+         "longitude":3.094639
+    },
+    {
+          "id":"A026",
+          "name":"Léon Blum",
+          "latitude":45.762806,
+          "longitude":3.098435
+    },
+    {
+           "id":"A027",
+           "name":"La Chaux",
+           "latitude":45.760741,
+           "longitude":3.104145
+    },
+    {
+            "id":"A028",
+            "name":"Cézeaux Pellez",
+            "latitude":45.761127,
+            "longitude":3.108886
+    },
+    {
+             "id":"A029",
+             "name":"Campus",
+             "latitude":45.758915,
+             "longitude":3.113857
+    },
+    {
+              "id":"A030",
+              "name":"Margeride",
+              "latitude":45.760838,
+              "longitude":3.119931
+    },
+    {
+               "id":"A031",
+               "name":"Fontaine du Bac",
+               "latitude":45.762303,
+               "longitude":3.122042
+    },
+    {
+                "id":"A032",
+                "name":"Lycée Lafayette",
+                "latitude":45.763502,
+                "longitude":3.129545
+    },
+    {
+                "id":"A033",
+                "name":"La Pardieu Gare",
+                "latitude":45.766724,
+                "longitude":3.134306
     }
 
 ]
