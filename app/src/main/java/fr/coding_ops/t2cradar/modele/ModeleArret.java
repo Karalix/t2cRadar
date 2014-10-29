@@ -59,20 +59,42 @@ public class ModeleArret {
         }
         Float distance = null ;
         int index = 0 ;
-        float[] results = new float[3];
+        float result = 0 ;
+        Location arret = new Location("arret");
         for (int i = 0 ; i<arrets.size() ; i++)
         {
-            Location.distanceBetween(arrets.get(i).getLatitude(), arrets.get(i).getLongitude(), location.getLatitude(), location.getLongitude(), results);
+            arret.setLatitude(arrets.get(i).getLatitude());
+            arret.setLongitude(arrets.get(i).getLongitude());
+            result = location.distanceTo(arret);
             if(distance == null)
             {
-                distance = new Float(results[0]);
+                distance = new Float(result);
             }
-            if (results[0]<= distance)
+            if (result<= distance)
             {
-                distance = results[0];
+                distance = result;
                 index = i ;
             }
         }
         return arrets.get(index) ;
+    }
+
+
+    /**
+     * Gets the Arret characterized by a specific ID
+     * @param id the id of the the Arret we are looking for
+     * @return the Arret the given id, or null if none found
+     */
+    public Arret findById(String id)
+    {
+        for(Arret a : arrets)
+        {
+            if (a.getId().equals(id))
+            {
+                return a ;
+            }
+        }
+
+        return null ;
     }
 }

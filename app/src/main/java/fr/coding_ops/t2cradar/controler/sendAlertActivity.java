@@ -22,7 +22,9 @@ import com.google.android.gms.location.LocationClient;
 
 import fr.coding_ops.t2cradar.R;
 import fr.coding_ops.t2cradar.modele.Arret;
+import fr.coding_ops.t2cradar.modele.ModeleAlert;
 import fr.coding_ops.t2cradar.modele.ModeleArret;
+import fr.coding_ops.t2cradar.modele.ReceivedAlert;
 import fr.coding_ops.t2cradar.modele.SentAlert;
 import fr.coding_ops.t2cradar.modele.dataloader.JSONReader;
 
@@ -84,6 +86,11 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
         for(Arret a : JSONReader.getInstance().readArrets())
         {
             ModeleArret.getInstance().addArret(a);
+        }
+
+        for (ReceivedAlert ra : JSONReader.getInstance().readAlerts())
+        {
+            ModeleAlert.getInstance().addAlert(ra);
         }
 
 
