@@ -9,7 +9,9 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.location.Location;
+import android.location.LocationManager;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -31,7 +33,6 @@ import fr.coding_ops.t2cradar.modele.dataloader.JSONReader;
 
 public class sendAlertActivity extends Activity implements ActionBar.TabListener {
 
-    private boolean canGetLocation = false ;
 
     private LocationClient locationClient = null ;
 
@@ -94,22 +95,29 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
         }
 
 
+        checkGooglePalyServicesAvailbility();
 
+    }
+
+    /**
+     * Checks if Google play services are available
+     * Not sure if it is utile
+     *
+     */
+    private void checkGooglePalyServicesAvailbility()
+    {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         // If Google Play services is available
         if (ConnectionResult.SUCCESS == resultCode) {
             // In debug mode, log the status
             Toast.makeText(getApplicationContext(), "Google Services available", Toast.LENGTH_SHORT).show();
-            canGetLocation = true ;
+
             MyLocationManager locationManager = new MyLocationManager(this);
             locationClient = new LocationClient(this, locationManager,locationManager);
-
         } else
         {
             Toast.makeText(getApplicationContext(), "Google Services unavailable", Toast.LENGTH_SHORT).show();
-            canGetLocation = false ;
         }
-
     }
 
     @Override
@@ -133,15 +141,22 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
         locationClient.connect();
     }
 
+
+
     @Override
     protected void onStop() {
         locationClient.disconnect();
         super.onStop();
     }
 
+    /**
+     * Called method when user push the button to send an alert
+     *
+     * @param view
+     */
     public void sendAlert(View view)
     {
-        if(!canGetLocation)
+        if(!canGetLocation())
         {
             return ;
         }
@@ -149,6 +164,32 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
         Toast.makeText(getApplicationContext(), "lat : "+captedtLocation.getLatitude()+" lng : "+captedtLocation.getLongitude(), Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), ModeleArret.getInstance().findNearestTo(captedtLocation).getName(), Toast.LENGTH_SHORT).show();
         SentAlert alert = new SentAlert(ModeleArret.getInstance().findNearestTo(captedtLocation));
+    }
+
+    /**
+     * Checks if Location services are enabled either GPS or network
+     *
+     * @return true if the services are activated, false otherwise
+     */
+    private boolean canGetLocation()
+    {
+        LocationManager lm = null ;
+        boolean networkEnabled = false ;
+        boolean gpsEnabled = false ;
+
+        lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+
+        gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        networkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        if(!gpsEnabled && !networkEnabled)
+        {
+            Toast.makeText(getApplicationContext(), "Veuillez activer les services de localosation.", Toast.LENGTH_SHORT).show();
+            return false ;
+        }
+
+        return true ;
     }
 
     /**
