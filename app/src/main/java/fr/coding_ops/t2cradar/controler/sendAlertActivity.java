@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationRequest;
 
 import fr.coding_ops.t2cradar.R;
 import fr.coding_ops.t2cradar.modele.Arret;
@@ -34,9 +35,14 @@ import fr.coding_ops.t2cradar.modele.dataloader.JSONReader;
 public class sendAlertActivity extends Activity implements ActionBar.TabListener {
 
 
+
     private LocationClient locationClient = null ;
 
     private Location captedtLocation = null ;
+
+    LocationRequest locRequest = null ;
+
+    MyLocationManager locationManager = null ;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -44,6 +50,13 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+
+
+
+    public LocationClient getLocationClient()
+    {
+        return locationClient;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +107,9 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
             ModeleAlert.getInstance().addAlert(ra);
         }
 
-
         checkGooglePalyServicesAvailbility();
+
+
 
     }
 
@@ -112,7 +126,16 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
             // In debug mode, log the status
             Toast.makeText(getApplicationContext(), "Google Services available", Toast.LENGTH_SHORT).show();
 
-            MyLocationManager locationManager = new MyLocationManager(this);
+            locRequest = LocationRequest.create();
+            locationManager = new MyLocationManager(this, locRequest);
+
+
+            locRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+            locRequest.setInterval(5000);
+
+            locRequest.setFastestInterval(1000);
+
             locationClient = new LocationClient(this, locationManager,locationManager);
         } else
         {
@@ -145,6 +168,10 @@ public class sendAlertActivity extends Activity implements ActionBar.TabListener
 
     @Override
     protected void onStop() {
+        if(locationClient.isConnected())
+        {
+            locationClient.removeLocationUpdates(locationManager);
+        }
         locationClient.disconnect();
         super.onStop();
     }
