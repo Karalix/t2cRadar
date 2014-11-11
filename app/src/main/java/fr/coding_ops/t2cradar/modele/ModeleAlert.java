@@ -3,6 +3,11 @@ package fr.coding_ops.t2cradar.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.coding_ops.t2cradar.R;
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.internal.CardThumbnail;
+
 /**
  * Class managing all the current received alerts
  *
@@ -52,4 +57,30 @@ public class ModeleAlert
         }
     }
 
+    public ArrayList<Card> getListCardAlerts()
+    {
+        ArrayList<Card> list = new ArrayList<Card>();
+        for(ReceivedAlert a: alerts)
+        {
+            //Create a Card
+            Card card = new Card(MyApplication.getAppContext());
+            CardThumbnail thumb = new CardThumbnail(MyApplication.getAppContext());
+            thumb.setDrawableResource(R.drawable.ic_launcher);
+
+            card.addCardThumbnail(thumb);
+            card.setTitle("Indice de confiace : "+String.valueOf(a.getUpvote()/(a.getUpvote()+a.getDownvote())));
+
+            //Create a CardHeader
+            CardHeader header = new CardHeader(MyApplication.getAppContext());
+            header.setTitle(a.getArret().getName());
+
+            //Add Header to card
+            card.addCardHeader(header);
+
+            list.add(card);
+        }
+
+        return  list ;
+
+    }
 }

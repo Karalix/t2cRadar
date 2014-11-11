@@ -1,6 +1,5 @@
 package fr.coding_ops.t2cradar.controler;
 
-import android.app.Activity;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
@@ -9,27 +8,27 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.drive.internal.ac;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 
 import fr.coding_ops.t2cradar.R;
-import fr.coding_ops.t2cradar.modele.ModeleAlert;
 import fr.coding_ops.t2cradar.modele.ModeleArret;
 
 /**
+ * Class MyLocationManager, implements ConnectionCallbacks, OnConnectionFailedListener and LocationListener
+ *
  * Created by Alix on 22/10/2014.
  */
 public class MyLocationManager implements GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener, LocationListener
 {
 
     private final LocationRequest locRequest;
-    private Activity activity;
+    private sendAlertActivity activity;
 
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
 
-    public MyLocationManager(Activity activity, LocationRequest locRequest)
+    public MyLocationManager(sendAlertActivity activity, LocationRequest locRequest)
     {
         this.activity = activity ;
 
@@ -40,7 +39,7 @@ public class MyLocationManager implements GooglePlayServicesClient.ConnectionCal
     public void onConnected(Bundle bundle) {
         Toast.makeText(activity.getApplicationContext(), "Le service de géolocalisation est connecté.", Toast.LENGTH_SHORT).show();
 
-        ((sendAlertActivity)activity).getLocationClient().requestLocationUpdates(locRequest, this);
+        activity.getLocationClient().requestLocationUpdates(locRequest, this);
     }
 
     @Override
@@ -75,8 +74,9 @@ public class MyLocationManager implements GooglePlayServicesClient.ConnectionCal
     @Override
     public void onLocationChanged(Location location)
     {
+        activity.setCurrentLocation(location);
         TextView nameArret = (TextView)activity.findViewById(R.id.currentArretText);
-        nameArret.setText( ModeleArret.getInstance().findNearestTo(location).getName());
+        nameArret.setText( ModeleArret.getInstance().findNearestTo(activity.getCurrentLocation()).getName());
     }
 
 }

@@ -81,6 +81,22 @@ public class ModeleArret {
 
 
     /**
+     * Gets the distance in meters from location to arret
+     * @param location the initial location
+     * @param arret the arret we want to know the distance to
+     * @return the distance in meters from location to arret
+     */
+    public float findDistanceTo(Location location, Arret arret)
+    {
+        Location locationArret = new Location("arret");
+        locationArret.setLatitude(arret.getLatitude());
+        locationArret.setLongitude(arret.getLongitude());
+
+        return location.distanceTo(locationArret);
+    }
+
+
+    /**
      * Gets the Arret characterized by a specific ID
      * @param id the id of the the Arret we are looking for
      * @return the Arret the given id, or null if none found
@@ -97,4 +113,23 @@ public class ModeleArret {
 
         return null ;
     }
+
+    /**
+     * Gets the Arret characterized by a specific name
+     * @param name the name of the first Arret with the corresponding name
+     * @return the Arret the given id, or null if none found
+     */
+    public Arret findByName(String name)
+    {
+        for(Arret a : arrets)
+        {
+            if (a.getName().equals(name))
+            {
+                return a ;
+            }
+        }
+
+        return null ;
+    }
+
 }
