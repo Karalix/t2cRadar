@@ -50,6 +50,10 @@ public class SendAlertFragment extends Fragment implements CodingOpsFragment {
         return "sendAlert" ;
     }
 
+
+    /**
+     * Sets up the field showing the distance to selected Arret : each time the textfield containing the name of the arret changes, the distance updates
+      */
     private void setUpDistanceField()
     {
         TextView tv1 = (TextView) getView().findViewById(R.id.currentArretText);
